@@ -60,39 +60,44 @@ const LoginPage = () => {
 
     return (
         <div className="container">
-            <div className="input-container">
-                <div className="email-container">
-                    <input
-                        type="text"
-                        className="email-input"
-                        name='email'
-                        value={email}
-                        onChange={(e) => handleChange(e)}
-                        placeholder="Email"
-                        onBlur={(e) => validateEmail(e.target.value)}
-                    />
-                </div>
-                {error.email && <span className="error-message">{error.email}</span>}
-                <div className="password-container">
-                    <div className="eye-button" onClick={() => setViewPassword(!viewPassword)}>
-                        {viewPassword ?
-                            <i className="fa fa-eye-slash" /> :
-                            <i className="fa fa-eye" />
-                        }
+            <div className="heading"><span>Login Page</span></div>
+            <div className="form-body">
+                <div className="input-container">
+                    <div className="email-container">
+                        <input
+                            type="text"
+                            className="email-input"
+                            name='email'
+                            value={email}
+                            onChange={(e) => handleChange(e)}
+                            placeholder="Email"
+                            onBlur={(e) => validateEmail(e.target.value)}
+                        />
                     </div>
-                    <input
-                        type={viewPassword ? "text" : "password"}
-                        className="password-input"
-                        name='password'
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => handleChange(e)}
-                        onBlur={(e) => validatePassword(e.target.value)}
-                    />
+                    {error.email && <span className="error-message">{error.email}</span>}
+                    <div className="password-container">
+                        <div className="eye-button" onClick={() => setViewPassword(!viewPassword)}>
+                            {viewPassword ?
+                                <i className="fa fa-eye-slash" /> :
+                                <i className="fa fa-eye" />
+                            }
+                        </div>
+                        <input
+                            type={viewPassword ? "text" : "password"}
+                            className="password-input"
+                            name='password'
+                            placeholder="Password"
+                            value={password}
+                            onChange={(e) => handleChange(e)}
+                            onBlur={(e) => validatePassword(e.target.value)}
+                        />
+                    </div>
+                    {error.password && <span className="error-message">{error.password}</span>}
                 </div>
-                {error.password && <span className="error-message">{error.password}</span>}
+                <div className="btn-wrapper">
+                    <button className="login-button" onClick={() => handleLogin()} >Login</button>
+                </div>
             </div>
-            <button className="login-button" onClick={() => handleLogin()} >Login</button>
         </div>
     )
 }
